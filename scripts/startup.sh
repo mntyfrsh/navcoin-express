@@ -1,15 +1,26 @@
 #!/bin/bash
 
-installed=$(find /home/odroid/navdroid -type d -maxdepth 1 -name 'navcoin-*')
-installed="${installed:30}"
+sudo /bin/systemctl stop navcoin
+sudo /bin/systemctl stop navcoin-repair
 
-/home/odroid/navdroid/navcoin-${installed}/bin/navcoin-cli stop
-/home/odroid/navdroid/navcoin-${installed}/bin/navcoind &
+sleep 10
 
-forever stopall
+sudo /bin/systemctl start navcoin
+sudo /bin/systemctl start navcoin-express
+sudo /bin/systemctl start navcoin-angular
 
-cd /home/odroid/navdroid/express
-forever start ./bin/www
 
-cd /home/odroid/navdroid/angular
-forever start node_modules/@angular/cli/bin/ng serve --ssl true --proxy-config proxy.config.json --host 0.0.0.0
+echo "DONE"
+echo
+
+
+
+# modify below here
+
+#forever stopall
+
+#cd /home/odroid/navdroid/express
+#forever start ./bin/www
+
+#cd /home/odroid/navdroid/angular
+#forever start node_modules/@angular/cli/bin/ng serve --ssl true --proxy-config proxy.config.json --host 0.0.0.0
