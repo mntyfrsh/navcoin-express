@@ -5,7 +5,7 @@ After=network-online.target
 After=time-sync.target
 
 [Service]
-User=odroid
+User=root
 Type=simple
 WorkingDirectory=/opt/navcoin-express/
 ExecStart=/usr/bin/node ./bin/www
