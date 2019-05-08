@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# required for dpkg
+set -e
+
+systemctl stop navcoin-express

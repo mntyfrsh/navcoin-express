@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# required for dpkg
+set -e
+
+# reload systemctl services
+systemctl daemon-reload
+
+# reload apache2
+systemctl reload apache2
