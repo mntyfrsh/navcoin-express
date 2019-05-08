@@ -1,0 +1,18 @@
+[Unit]
+Description=navcoin-express
+After=network.target
+After=network-online.target
+After=time-sync.target
+
+[Service]
+User=odroid
+Type=simple
+WorkingDirectory=/opt/navcoin-express/
+ExecStart=/opt/navcoin-express/node_modules/@angular/cli/bin/ng serve --ssl true --proxy-config proxy.config.json --host 0.0.0.0
+ExecStop=/bin/kill $MAINPID
+#Restart=on-failure
+#RestartSec=15
+TimeoutStopSec=300
+
+[Install]
+WantedBy=multi-user.target
