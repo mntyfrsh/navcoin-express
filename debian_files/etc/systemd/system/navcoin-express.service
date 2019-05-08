@@ -8,10 +8,8 @@ After=time-sync.target
 User=odroid
 Type=simple
 WorkingDirectory=/opt/navcoin-express/
-ExecStart=/opt/navcoin-express/node_modules/@angular/cli/bin/ng serve --ssl true --proxy-config proxy.config.json --host 0.0.0.0
+ExecStart=/usr/bin/node ./bin/www
 ExecStop=/bin/kill $MAINPID
-#Restart=on-failure
-#RestartSec=15
 TimeoutStopSec=300
 
 [Install]
