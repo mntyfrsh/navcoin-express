@@ -3,6 +3,9 @@
 VERSION="1.0.0"
 ARCH=`uname -a | awk '{ print $13}'`
 
+# compile node modules
+npm i
+
 # create temp directory
 mkdir -p ../ne-build/debian/DEBIAN
 mkdir -p ../ne-build/debian/opt/navcoin-express
