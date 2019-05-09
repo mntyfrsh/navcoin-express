@@ -1,5 +1,13 @@
 #!/bin/bash
 
+#
+# Build navcoin-angular package
+#
+# Do not run this script from /tmp unless you are root because
+# the package is written to a directory directly above the
+# current directory
+#
+
 VERSION="1.0.0"
 ARCH=`uname -a | awk '{ print $13}'`
 
