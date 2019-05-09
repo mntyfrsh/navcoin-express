@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo /sbiin/shutdown now
+/sbin/shutdown now
