@@ -1,6 +1,7 @@
 #!/bin/bash
 
 VERSION="1.0.0"
+ARCH=`uname -a | awk '{ print $13}'`
 
 # create temp directory
 mkdir -p ../ne-build/debian/DEBIAN
@@ -15,12 +16,12 @@ cp -pr `pwd`/. ../ne-build/debian/opt/navcoin-express/
 # build package
 cd ../ne-build/
 dpkg --build debian
-mv debian.deb ../navcoin-express_$VERSION.deb
+mv debian.deb ../navcoin-express_${VERSION}_$ARCH.deb
 cd ..
 rm -rf ne-build
 
 echo
-echo "Package is ready at `pwd`/navcoin-express_$VERSION.deb"
+echo "Package is ready at `pwd`/navcoin-express_${VERSION}_$ARCH.deb"
 echo
-echo "Install using: dpkg -i navcoin-express_$VERSION.deb"
+echo "Install using: dpkg -i navcoin-express_${VERSION}_$ARCH.deb"
 echo
