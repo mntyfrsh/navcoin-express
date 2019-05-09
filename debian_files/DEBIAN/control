@@ -1,9 +1,6 @@
 Package: navcoin-express
-Priority: extra
-Section: checkinstall
 Maintainer: info@navcoin.org
 Architecture: armhf
 Version: 1.0.0-1
-Depends: git
 Provides: navcoin-express
 Description: Express frontend for Navdroid
