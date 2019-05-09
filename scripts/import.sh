@@ -18,6 +18,8 @@ FILE=$1
 mv /home/odroid/.navcoin4/wallet.dat /home/odroid/.navcoin4/${time}_wallet.dat
 
 cp $FILE /home/odroid/.navcoin4/wallet.dat
+chown odroid:odroid /home/odroid/.navcoin4/wallet.dat
+chmod 600 /home/odroid/.navcoin4/wallet.dat
 
 sudo /bin/systemctl stop navcoin
 
