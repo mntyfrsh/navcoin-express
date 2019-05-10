@@ -86,7 +86,7 @@ router.post('/update-daemon', (req, res, next) => {
   }
 
   try {
-    const command = spawn('/home/odroid/navdroid/express/scripts/update-daemon.sh');
+    const command = spawn('/opt/navcoin-express/scripts/update-daemon.sh');
     var responded = false;
     command.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`);
@@ -102,7 +102,7 @@ router.post('/update-daemon', (req, res, next) => {
         );
         res.status(200).send(response);
 
-        const command = spawn('/home/odroid/navdroid/express/scripts/restart-web.sh');
+        const command = spawn('/opt/navcoin-express/scripts/restart-web.sh');
 
         command.stdout.on('data', (data) => {
           console.log(`stdout: ${data}`);
@@ -184,7 +184,7 @@ router.post('/update-ui', (req, res, next) => {
   try {
 
     exec(
-      '/home/odroid/navdroid/express/scripts/update-ui.sh',
+      '/opt/navcoin-express/scripts/update-ui.sh',
       (error, stdout, stderr) => {
         if (error) {
           const response = JSON.stringify(
@@ -223,7 +223,7 @@ router.post('/update-ui', (req, res, next) => {
         );
         res.status(200).send(response);
 
-        const command = spawn('/home/odroid/navdroid/express/scripts/restart-web.sh');
+        const command = spawn('/opt/navcoin-express/scripts/restart-web.sh');
 
         command.stdout.on('data', (data) => {
           console.log(`stdout: ${data}`);
@@ -273,7 +273,7 @@ router.post('/restart-web', (req, res, next) => {
     );
     res.status(200).send(response);
 
-    const command = spawn('/home/odroid/navdroid/express/scripts/restart-web.sh');
+    const command = spawn('/opt/navcoin-express/scripts/restart-web.sh');
 
     command.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`);
@@ -320,7 +320,7 @@ router.post('/reboot', (req, res, next) => {
     );
     res.status(200).send(response);
 
-    const command = spawn('/home/odroid/navdroid/express/scripts/reboot.sh');
+    const command = spawn('/opt/navcoin-express/scripts/reboot.sh');
 
     command.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`);
@@ -360,7 +360,7 @@ router.post('/restart-daemon', (req, res, next) => {
 
   try {
     var responded = false;
-    const command = spawn('/home/odroid/navdroid/express/scripts/restart-daemon.sh');
+    const command = spawn('/opt/navcoin-express/scripts/restart-daemon.sh');
 
     command.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`);
@@ -466,7 +466,7 @@ router.post('/import-wallet', (req, res, next) => {
 
       console.log('files.fileKey.path', files.fileKey.path);
 
-      const command = spawn('/home/odroid/navdroid/express/scripts/import.sh', [files.fileKey.path]);
+      const command = spawn('/opt/navcoin-express/scripts/import.sh', [files.fileKey.path]);
 
       command.stdout.on('data', (data) => {
         console.log(`stdout: ${data}`);
@@ -482,7 +482,7 @@ router.post('/import-wallet', (req, res, next) => {
           );
           res.status(200).send(response);
 
-          const command = spawn('/home/odroid/navdroid/express/scripts/restart-web.sh');
+          const command = spawn('/opt/navcoin-express/scripts/restart-web.sh');
 
           command.stdout.on('data', (data) => {
             console.log(`stdout: ${data}`);
