@@ -17,17 +17,17 @@ FILE=$1
 # backup old wallet.dat file
 mv /home/odroid/.navcoin4/wallet.dat /home/odroid/.navcoin4/${time}_wallet.dat
 
-cp $FILE /home/odroid/.navcoin4/wallet.dat
-chown odroid:odroid /home/odroid/.navcoin4/wallet.dat
-chmod 600 /home/odroid/.navcoin4/wallet.dat
+/bin/cp $FILE /home/odroid/.navcoin4/wallet.dat
+/usr/bin/sudo /bin/chown odroid:odroid /home/odroid/.navcoin4/wallet.dat
+/usr/bin/sudo /bin/chmod 600 /home/odroid/.navcoin4/wallet.dat
 
-sudo /bin/systemctl stop navcoin
+/usr/bin/sudo /bin/systemctl stop navcoin
 
 echo "sleeping for 10s..."
 echo
 sleep 10
 
-sudo /bin/systemctl start navcoin
+/usr/bin/sudo /bin/systemctl start navcoin
 
 echo "DONE"
 echo

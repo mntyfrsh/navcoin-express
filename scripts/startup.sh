@@ -1,13 +1,15 @@
 #!/bin/bash
 
-sudo /bin/systemctl stop navcoin
-sudo /bin/systemctl stop navcoin-repair
+# this script has been deprecated since we now start via systemd
+
+/usr/bin/sudo /bin/systemctl stop navcoin
+/usr/bin/sudo /bin/systemctl stop navcoin-repair
 
 sleep 10
 
-sudo /bin/systemctl start navcoin
-sudo /bin/systemctl start navcoin-express
-sudo /bin/systemctl start navcoin-angular
+/usr/bin/sudo /bin/systemctl start navcoin
+/usr/bin/sudo /bin/systemctl start navcoin-express
+/usr/bin/sudo /bin/systemctl start navcoin-angular
 
 
 echo "DONE"

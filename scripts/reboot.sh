@@ -8,6 +8,6 @@ now=$(date +"%m-%d-%Y %T")
 
 echo "${now} - rebooting" >> $log
 
-sudo /sbin/shutdown -r now >> $log
+/usr/sbin/sudo /sbin/shutdown -r now >> $log
 
 echo "script finished" >> $log

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-systemctl stop navcoin
+/usr/bin/sudo /bin/systemctl stop navcoin
 
-sleep 5s
+sleep 10
 
-systemctl start navcoin
+/usr/bin/sudo /bin/systemctl start navcoin
 
 exit 0

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/sbin/shutdown now
+/usr/bin/sudo /sbin/init 0
