@@ -23,7 +23,7 @@ mkdir -p ../ne-build/debian/etc/systemd/system
 cp -p debian_files/DEBIAN/* ../ne-build/debian/DEBIAN/
 cp -p debian_files/etc/systemd/system/* ../ne-build/debian/etc/systemd/system/
 cp -pr `pwd`/. ../ne-build/debian/opt/navcoin-express/
-rm -rf ../na-build/debian/opt/navcoin-express/.git*
+rm -rf ../ne-build/debian/opt/navcoin-express/.git*
 
 # build package
 cd ../ne-build/
