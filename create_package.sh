@@ -14,9 +14,6 @@ ARCH=`uname -a | awk '{ print $13}'`
 # compile node modules
 npm i
 
-# fix permissions
-chown -R odroid:odroid node_modules
-
 # create temp directory
 mkdir -p ../ne-build/debian/DEBIAN
 mkdir -p ../ne-build/debian/opt/navcoin-express

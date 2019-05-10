@@ -3,6 +3,9 @@
 # required
 set -e
 
+# fix permissions
+chown -R odroid:odroid /opt/navcoin-express
+
 # reload systemctl daemon
 systemctl daemon-reload
 
