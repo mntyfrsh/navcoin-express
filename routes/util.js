@@ -411,6 +411,69 @@ router.post('/restart-daemon', (req, res, next) => {
   }
 });
 
+router.post('/repair-wallet', (req, res, next) => {
+  var verified = common.checkPassword(req.body.password);
+  if (!verified) {
+    const response = JSON.stringify(
+      generateResponseObject('ERROR', 'PASSWD_001', 'Unauthorized', {})
+    );
+    res.status(500).send(response);
+    return;
+  }
+
+  try {
+    var responded = false;
+    const command = spawn('/opt/navcoin-express/scripts/repair-wallet.sh');
+
+    command.stdout.on('data', (data) => {
+      console.log(`stdout: ${data}`);
+      if (data.indexOf('NavCoin server starting') != -1 && !responded) {
+        responded = true;
+        const response = JSON.stringify(
+          generateResponseObject(
+            'SUCCESS',
+            'RESTART_DAEMON_001',
+            'NavCoin is restarting and repairing wallet',
+            {data},
+          )
+        );
+        res.status(200).send(response);
+        return
+      }
+    });
+
+    command.stderr.on('data', (data) => {
+      console.log(`stderr: ${data}`);
+      responded = true;
+      const response = JSON.stringify(
+        generateResponseObject(
+          'ERROR',
+          'RESTART_DAEMON_002',
+          'There was an error restarting NavCoin',
+          {data},
+        )
+      );
+      res.status(500).send(response);
+      return
+    });
+
+    command.on('close', (code) => {
+      console.log(`child process exited with code ${code}`);
+    });
+
+  } catch (err) {
+    const response = JSON.stringify(
+      generateResponseObject(
+        'ERROR',
+        'RESTART_DAEMON_005',
+        'Failed to restart NavCoin',
+        { err }
+      )
+    );
+    res.status(500).send(response);
+  }
+});
+
 router.post('/backup-wallet', (req, res, next) => {
   var verified = common.checkPassword(req.body.password);
   if (!verified) {
