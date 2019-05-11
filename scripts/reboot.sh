@@ -11,3 +11,4 @@ echo "${now} - rebooting" >> $log
 /usr/sbin/sudo /sbin/shutdown -r now >> $log
 
 echo "script finished" >> $log
+

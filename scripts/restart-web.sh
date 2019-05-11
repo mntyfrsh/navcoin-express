@@ -7,10 +7,7 @@ chmod 777 $log
 now=$(date +"%m-%d-%Y %T")
 echo "${now} - restart ui" >> $log
 
-/usr/bin/sudo /bin/systemctl stop navcoin-express
-/usr/bin/sudo /bin/systemctl stop navcoin-angular
+/usr/bin/sudo /bin/systemctl restart navcoin-express
+/usr/bin/sudo /bin/systemctl restart navcoin-angular
 
-sleep 5
-
-/usr/bin/sudo /bin/systemctl start navcoin-express
-/usr/bin/sudo /bin/systemctl start navcoin-angular
+exit 0
