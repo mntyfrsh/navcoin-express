@@ -21,12 +21,13 @@ mv /home/odroid/.navcoin4/wallet.dat /home/odroid/.navcoin4/${time}_wallet.dat
 /usr/bin/sudo /bin/chmod 600 /home/odroid/.navcoin4/wallet.dat
 
 /usr/bin/sudo /bin/systemctl stop navcoin
+/usr/bin/sudo /bin/systemctl stop navcoin-repair
 
 echo "sleeping for 10s..."
 echo
 sleep 10
 
-/usr/bin/sudo /bin/systemctl start navcoin
+/usr/bin/sudo /bin/systemctl start navcoin-repair
 
 echo "DONE"
 echo
