@@ -9,7 +9,7 @@
 #
 
 VERSION="1.0.0"
-ARCH=`uname -a | awk '{ print $13}'`
+ARCH="armhf"
 
 # compile node modules
 npm i
