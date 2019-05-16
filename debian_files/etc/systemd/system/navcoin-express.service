@@ -11,6 +11,8 @@ WorkingDirectory=/opt/navcoin-express/
 ExecStart=/usr/bin/node ./bin/www
 ExecStop=/bin/kill $MAINPID
 TimeoutStopSec=300
+StandardOutput=append:/var/log/navcoin-express.log
+StandardError=append:/var/log/navcoin-express.log
 
 [Install]
 WantedBy=multi-user.target
