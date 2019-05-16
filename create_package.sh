@@ -9,7 +9,7 @@
 #
 
 VERSION="1.0.0"
-ARCH="armhf"
+ARCH=`grep Architecture debian_files/DEBIAN/control | awk '{ print $2 }'`
 
 # compile node modules
 npm i
