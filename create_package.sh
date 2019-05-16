@@ -14,6 +14,9 @@ ARCH=`grep Architecture debian_files/DEBIAN/control | awk '{ print $2 }'`
 # compile node modules
 npm i
 
+# compute md5sum
+find . -type f ! -regex '.*.hg.*' ! -regex '.*?debian-binary.*' ! -regex '.*?DEBIAN.*' -printf '%P ' | xargs md5sum > debian_files/DEBIAN/md5sums
+
 # create temp directory
 mkdir -p ../ne-build/debian/DEBIAN
 mkdir -p ../ne-build/debian/opt/navcoin-express
