@@ -1,0 +1,12 @@
+/var/log/navcoin-express.log {
+        weekly
+        missingok
+        rotate 7
+        compress
+        delaycompress
+        create 0640 root root
+        sharedscripts
+        dateext
+        size=5M
+        notifempty
+}
