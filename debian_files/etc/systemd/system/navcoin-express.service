@@ -6,7 +6,7 @@ After=time-sync.target
 
 [Service]
 User=odroid
-Type=simple
+Type=notify
 WorkingDirectory=/opt/navcoin-express/
 ExecStart=/usr/bin/node ./bin/www
 ExecStop=/bin/kill $MAINPID
