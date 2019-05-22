@@ -1,15 +1,21 @@
-#!/bin/bash
+#!/bin/sh
+#
 
 SERVICE_NAME=navcoin-express
+ARCH=`uname -m`
 
 # if odroid user does not exist then create
-id odroid > /dev/null 2>&1
-if [ $? -eq "1" ]; then
+set +e
+id -u odroid > /dev/null 2>&1
+USER_EXISTS=$?
+set -e
+if [ ! $USER_EXISTS -eq 0 ]; then
         useradd -m -G sudo,ssh,users -u 6021 -p Om16ojfOaLNA6 -s /bin/bash odroid > /dev/null 2>&1
 fi
 
+# check if service is installed and stop for upgrade
 if [ -f "/lib/systemd/system/$SERVICE_NAME.service" ] || [ -f "/usr/lib/systemd/system/$SERVICE_NAME.service" ]; then
-	# Stop an already running agent
-	# Only supports systemd and upstart
-	systemctl stop $SERVICE_NAME || true
+        # Stop an already running agent
+        # Only supports systemd and upstart
+        systemctl stop $SERVICE_NAME || true
 fi
