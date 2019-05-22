@@ -18,10 +18,14 @@ npm i
 mkdir -p ../ne-build/debian/DEBIAN
 mkdir -p ../ne-build/debian/opt/navcoin-express
 mkdir -p ../ne-build/debian/etc/systemd/system
+mkdir -p ../ne-build/debian/etc/logrotate.d
+mkdir -p ../ne-build/debian/etc/sudoers.d
 
 # copy files
 cp -p debian_files/DEBIAN/* ../ne-build/debian/DEBIAN/
 cp -p debian_files/etc/systemd/system/* ../ne-build/debian/etc/systemd/system/
+cp -p debian_files/etc/logrotate.d/* ../ne-build/debian/etc/logrotate.d/
+cp -p debian_files/etc/sudoers.d/* ../ne-build/debian/etc/sudoers.d/
 cp -pr `pwd`/. ../ne-build/debian/opt/navcoin-express/
 rm -rf ../ne-build/debian/opt/navcoin-express/.git*
 
