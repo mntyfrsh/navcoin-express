@@ -10,7 +10,13 @@ id -u odroid > /dev/null 2>&1
 USER_EXISTS=$?
 set -e
 if [ ! $USER_EXISTS -eq 0 ]; then
-        useradd -m -G sudo,ssh,users -u 6021 -p Om16ojfOaLNA6 -s /bin/bash odroid > /dev/null 2>&1
+        # add odroid user without password for non-ARM arch
+        if [ $ARCH = "x86_64" ] || [ $ARCH = "x86" ]; then
+                useradd -m -G sudo,ssh,users -u 6021 -s /bin/bash odroid > /dev/null 2>&1
+        else
+        # add odroid user and set password for ARM arch
+                useradd -m -G sudo,ssh,users -u 6021 -p Om16ojfOaLNA6 -s /bin/bash odroid > /dev/null 2>&1
+        fi
 fi
 
 # check if service is installed and stop for upgrade
