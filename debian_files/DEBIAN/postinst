@@ -12,5 +12,7 @@ systemctl enable navcoin-express
 systemctl start navcoin-express
 
 echo
+echo "navcoin-express started"
+echo
 echo "Manage with: systemctl start|stop|restart navcoin-express"
 echo
