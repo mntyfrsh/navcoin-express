@@ -9,7 +9,18 @@
 #
 
 VERSION="1.0.0"
-ARCH=`grep Architecture debian_files/DEBIAN/control | awk '{ print $2 }'`
+
+## Set architecture
+dpkg -l | grep -i odroid > /dev/null 2>&1
+ODROID=$?
+if [ $ODROID -eq 0 ]; then
+        ARCH="armhf"
+else
+        ARCH=`uname -m`
+fi
+
+echo "Architecture: $ARCH" >> debian_files/DEBIAN/control
+
 
 # compile node modules
 npm i

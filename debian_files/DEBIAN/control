@@ -1,6 +1,5 @@
 Package: navcoin-express
 Maintainer: info@navcoin.org
-Architecture: armhf
 Version: 1.0.0-1
 Provides: navcoin-express
 Description: Express frontend for Navdroid
