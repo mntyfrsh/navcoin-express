@@ -11,16 +11,7 @@
 VERSION="1.0.0"
 
 ## Set architecture
-dpkg -l | grep -i odroid > /dev/null 2>&1
-ODROID=$?
-if [ $ODROID -eq 0 ]; then
-        ARCH="armhf"
-else
-        ARCH=`uname -m`
-        if [ $ARCH = "x86_64" ]; then
-                ARCH="amd64"
-        fi
-fi
+ARCH=`dpkg --print-architecture`
 
 echo "Architecture: $ARCH" >> debian_files/DEBIAN/control
 
